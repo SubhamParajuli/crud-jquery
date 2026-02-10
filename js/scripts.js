@@ -98,3 +98,22 @@ function startEdit(idx) {
     });
 }
 
+function saveEdit(idx, newValue) {
+    const trimmedValue = $.trim(newValue);
+
+    if (!trimmedValue) {
+        alert("Task cannot be empty!");
+        return;
+    }
+
+    items[idx] = trimmedValue;
+    editingIndex = null;
+
+    renderItem();
+    saveItems();
+}
+
+function cancelEdit() {
+    editingIndex = null;
+    renderItem();
+}
