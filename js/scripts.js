@@ -48,3 +48,53 @@ function renderItem() {
     });
 }
 
+
+// Start Edit function
+
+function startEdit(idx) {
+    editingIndex = idx;
+
+    const $container = $(`#item-${idx}`);
+    const $textElement = $container.find(".item-text");
+    const $buttonGroup = $container.find(".button-group");
+
+    const $editInput = $("<input>", {
+        type: "text",
+        class: "edit-input",
+        value: items[idx]
+    });
+
+    const $saveButton = $("<button>", {
+        class: "save-btn",
+        html: '<i class="fas fa-check"></i> Save'
+    }).on("click", function () {
+        saveEdit(idx, $editInput.val());
+    });
+
+    const $cancelButton = $("<button>", {
+        class: "cancel-btn",
+        html: '<i class="fas fa-times"></i> Cancel'
+    }).on("click", function () {
+        cancelEdit();
+    });
+
+    const $actionGroup = $("<div>", {
+        class: "action-group"
+    }).append($saveButton, $cancelButton);
+
+    $textElement.hide();
+    $buttonGroup.hide();
+
+    $container.append($editInput, $actionGroup);
+
+    $editInput.focus().select();
+
+    $editInput.on("keydown", function (e) {
+        if (e.key === "Enter") {
+            saveEdit(idx, $(this).val());
+        } else if (e.key === "Escape") {
+            cancelEdit();
+        }
+    });
+}
+
