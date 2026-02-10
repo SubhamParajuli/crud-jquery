@@ -132,3 +132,31 @@ function addItem() {
     $("#ItemInput").val("");
     saveItems();
 }
+function removeItems(idx) {
+    items.splice(idx, 1);
+    renderItem();
+    saveItems();
+}
+
+
+
+// local storage 
+function loadItems() {
+    const oldItems = localStorage.getItem(storageKey);
+    if (oldItems) {
+        items = JSON.parse(oldItems);
+    }
+    renderItem();
+}
+function saveItems() {
+    localStorage.setItem(storageKey, JSON.stringify(items));
+}
+
+$("#ItemInput").on("keydown", function (e) {
+    if (e.key === "Enter") {
+        addItem();
+    }
+});
+$(function () {
+    loadItems();
+});
