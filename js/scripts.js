@@ -1,3 +1,9 @@
+
+// Global Variable
+let items = [];
+const storageKey = "items";
+let editingIndex = null;
+// Render Item
 function renderItem() {
     $("#items").empty();
 
@@ -17,11 +23,30 @@ function renderItem() {
             id: `item-${idx}`
         });
 
+        const $checkButton = $("<input>", {
+            type: "checkbox",
+            class: "checkbutton"
+        });
+
         const $text = $("<p>", {
             class: "item-text",
             text: item
         });
 
+        // Checkbox behaviour
+        $checkButton.on("change", function () {
+            if ($(this).is(":checked")) {
+                $text.css({
+                    "text-decoration": "line-through",
+                    "opacity": "0.6"
+                });
+            } else {
+                $text.css({
+                    "text-decoration": "none",
+                    "opacity": "1"
+                });
+            }
+        });
 
         const $buttonGroup = $("<div>", {
             class: "button-group"
@@ -47,10 +72,7 @@ function renderItem() {
         $("#items").append($container);
     });
 }
-
-
-// Start Edit function
-
+// Start Edit
 function startEdit(idx) {
     editingIndex = idx;
 
@@ -97,7 +119,7 @@ function startEdit(idx) {
         }
     });
 }
-
+// Save Edit
 function saveEdit(idx, newValue) {
     const trimmedValue = $.trim(newValue);
 
@@ -112,12 +134,12 @@ function saveEdit(idx, newValue) {
     renderItem();
     saveItems();
 }
-
+// Cancel Edit
 function cancelEdit() {
     editingIndex = null;
     renderItem();
 }
-
+// Add Item
 function addItem() {
     const value = $.trim($("#ItemInput").val());
 
@@ -132,15 +154,14 @@ function addItem() {
     $("#ItemInput").val("");
     saveItems();
 }
+// Remove Item
 function removeItems(idx) {
     items.splice(idx, 1);
     renderItem();
     saveItems();
 }
+// Local Storage
 
-
-
-// local storage 
 function loadItems() {
     const oldItems = localStorage.getItem(storageKey);
     if (oldItems) {
@@ -148,6 +169,7 @@ function loadItems() {
     }
     renderItem();
 }
+
 function saveItems() {
     localStorage.setItem(storageKey, JSON.stringify(items));
 }
@@ -157,6 +179,7 @@ $("#ItemInput").on("keydown", function (e) {
         addItem();
     }
 });
+
 $(function () {
     loadItems();
 });
