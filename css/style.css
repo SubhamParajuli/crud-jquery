@@ -1,0 +1,219 @@
+/* Reset basic spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page style */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Main container */
+.container {
+  max-width: 500px;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header {
+  background-color: #667eea;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 14px;
+}
+
+/* Input section */
+.input-section {
+align-items: center;
+  padding: 20px;
+  background-color: #f7f7f7;
+}
+
+/* Input box */
+.input-wrapper {
+align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.checkbutton{
+    flex:1;
+}
+#ItemInput {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+/* Add button */
+.add-btn {
+  padding: 10px 15px;
+  background-color: #667eea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #5563d6;
+}
+
+/* Tasks section */
+.tasks-section {
+  padding: 20px;
+}
+
+.tasks-section h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+/* List items */
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+.item-text {
+  flex: 3;
+  font-size: 16px;
+}
+
+/* Buttons */
+.button-group {
+flex:2;
+display: flex;
+gap:3px;
+  
+}
+
+.edit-btn,
+.delete-btn {
+width:50%;
+  padding: 6px 10px;
+  font-size: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+
+.edit-btn {
+  background-color: #4299e1;
+}
+
+.delete-btn {
+  background-color: #ff6b6b;
+}
+
+/* Edit input */
+.edit-input {
+  flex: 2;
+  gap:2px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Save / Cancel buttons */
+.action-group {
+    flex:1;
+  display: flex;
+  padding: 8px;
+  gap: 5px;
+}
+
+.save-btn {
+  background-color: #48bb78;
+}
+
+.cancel-btn {
+  background-color: #ed8936;
+}
+
+.name{
+    font-size: small;
+    margin-top: 5px;
+}
+.save-btn,
+.cancel-btn {
+    width: 50%;
+  padding: 6px 10px;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  color: #888;
+  padding: 30px;
+}
+.empty-state i{
+    font-size: xx-large;
+    margin-bottom: 5px;
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .input-wrapper {
+    
+    flex-direction: column;
+    
+  }
+  .input-wrapper i{
+    align-self: center;
+  }
+
+  #ItemInput{
+    width: 100%;
+  }
+  .add-btn{
+    width: 100%;
+  }
+
+  .edit-input{
+    width:50%;
+  }
+
+
+  .button-group,
+  .action-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
