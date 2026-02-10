@@ -117,3 +117,18 @@ function cancelEdit() {
     editingIndex = null;
     renderItem();
 }
+
+function addItem() {
+    const value = $.trim($("#ItemInput").val());
+
+    if (!value) {
+        alert("You cannot add an empty task!");
+        return;
+    }
+
+    items.push(value);
+    renderItem();
+
+    $("#ItemInput").val("");
+    saveItems();
+}
